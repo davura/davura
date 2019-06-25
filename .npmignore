@@ -1,0 +1,5 @@
+debug
+node_modules
+.vscode
+.DS_Store
+npm-debug.log
