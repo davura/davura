@@ -2748,7 +2748,7 @@ var DAVURA = new (function(){
             // evaluate the operations in property
             var re = /([^ ]*)[0-9](px|em|vw|ex|ch|rem|vh|vmin|vmax|%|ms|s|cm|mm|pt|pc)/g;
             var size = /px|em|vw|ex|ch|rem|vh|vmin|vmax|%|ms|s|cm|mm|pt|pc/g;
-            var re2 = /([^]*)[0-9]([^]*)([^]-|\+|\/|\*)([^]*)[0-9]([^]*)/;
+            var re2 = /([^]*)[0-9]([^()]*)([^]-|\+|\/|\*)([^]*)[0-9]([^()]*)/;
     
             // var saved_size = 
     
@@ -2761,7 +2761,6 @@ var DAVURA = new (function(){
             }
     
             var result = getSize(operation); // {size, result}
-    
             if (saved_size){
                 _regex(result.result, /([0-9 +-/*.()]*)([^;]\+|-|\/|\*)([0-9 +-/*.(){}]*)/g, function(match,index) {
                     if (index !== 0) return;
