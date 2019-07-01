@@ -29,14 +29,15 @@
     "author": "Bonarja",
     "license": "MIT",
     "dependencies": {
+        "@babel/core": "^7.4.5",
         "@babel/plugin-transform-modules-commonjs": "^7.4.4",
+        "@babel/plugin-transform-template-literals": "^7.4.4",
+        "@babel/preset-env": "^7.4.5",
         "commander": "^2.20.0",
         "fs-extra": "^7.0.1",
         "jsdom": "^14.1.0",
         "live-server": "^1.2.1",
         "microsass": "^1.0.5",
-        "@babel/core": "^7.4.5",
-        "@babel/plugin-transform-template-literals": "^7.4.4",
-        "@babel/preset-env": "^7.4.5"
+        "open": "^6.4.0"
     }
 }

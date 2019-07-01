@@ -1006,8 +1006,7 @@ var DAVURA = new (function(){
     var isNumber = function(n){
         return !isNaN(parseFloat(n)) && isFinite(n);
     }
-    // copy object (used in case clone_object is not supported)
-    var copy_object = function(obj) {
+    var clone_object = function(obj) {
         // basic type deep copy
         if (obj === null || obj === undefined || typeof obj !== 'object')  {
             return obj
@@ -1026,14 +1025,6 @@ var DAVURA = new (function(){
             cloneO[i] = clone_object(obj[i]);
         }
         return cloneO;
-    }
-    // clone object
-    var clone_object = function(obj) {
-        try {
-            return new Object.assign({}, obj);
-        } catch (error) {
-            return copy_object(obj)
-        }
     }
     // retur new unique id
     var get_id = function() {
