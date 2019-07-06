@@ -4,9 +4,19 @@ const program = require("commander");
 const { newProject, newDav, server, renameDav, removeDav } = require("./lib/functions");
 const { link, unLink } = require("./lib/autoimport");
 const { compile } = require("./lib/compile");
-const version = require("./lib/version");
+const { print } = require('./lib/screens');
+const about = require("./lib/screens").about();
 
-program.version(version).description("Davura Client");
+program.version( about, "-v, --version, v, version")
+    .description("Davura client version");
+
+program
+    .command("version")
+    .alias("v")
+    .description("show Davura version")
+    .action(() => {
+        console.log(about);
+    });
 
 program
     .command("new <name>")
@@ -14,7 +24,7 @@ program
     .description("ini new Davura project")
     .action(name => {
         newProject(name).then(() => {
-            console.info("Project Created");
+            print("green", "Project Created");
         });
     });
 
@@ -24,7 +34,7 @@ program
     .description("add new Davura component")
     .action(name => {
         newDav(name).then(() => {
-            console.info(`added component ${name}`);
+            print("green", `added component ${name}`);
         });
     });
 
@@ -35,29 +45,31 @@ program
     .action((oldname, newname) => {
         renameDav(oldname, newname)
             .then(() => {
-                console.info(`renamed component "${oldname}" to "${newname}"`);
+                print("green", `renamed component "${oldname}" to "${newname}"`);
             })
             .catch(error => {
-                console.info(error);
+                print("red", error)
             });
     });
 
 program
     .command("remove <name>")
     .alias("rm")
-    .description("remove Davura component from d-module")
+    .description("remove Davura component")
     .action(name => {
         removeDav(name);
     });
 
 program
     .command("unlink <name>")
+    .description("remove component from d-import")
     .action(name => {
         unLink(name);
     });
 
 program
     .command("link <name>")
+    .description("add component in d-import")
     .action(name => {
         link(name);
     });

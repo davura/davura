@@ -457,7 +457,9 @@
                     x.style.animationDuration = time + "ms";
                 });
                 setTimeout(function() {
-                    self.removeClass(_class);
+                    self.forEach(function(x) {
+                        x.removeClass(_class);
+                    })
                     done(self);
                 }, time);
             });
@@ -487,8 +489,10 @@
                     });
                 });
                 setTimeout(function() {
-                    self.style.display = "none";
-                    self.removeClass(_class);
+                    self.forEach(function(x) {
+                        x.style.display = "none";
+                        x.removeClass(_class);
+                    });
                     done(self);
                 }, time);
             });
@@ -511,7 +515,9 @@
                     });
                 });
                 setTimeout(function() {
-                    self.removeClass(_class);
+                    self.forEach(function(x) {
+                        x.removeClass(_class);
+                    })
                     done(self);
                 }, time);
             });
@@ -1331,13 +1337,14 @@ var DAVURA = new (function(){
         })
         active_keypress(el,id);
     }
-    // active onkeypress, onkeydown, onkeyup
+    // active onkeypress, onkeydown, onkeyup, onchange
     var active_keypress = function(el, id){
-        Array.prototype.forEach.call(el.querySelectorAll("*[onkeypress], *[onkeydown], *[onkeyup]"), function (ele) {
+        Array.prototype.forEach.call(el.querySelectorAll("*[onkeypress], *[onkeydown], *[onkeyup], *[onchange]"), function (ele) {
             var events = {
                 onkeypress : ele.getAttribute("onkeypress"),
                 onkeydown : ele.getAttribute("onkeydown"),
-                onkeyup : ele.getAttribute("onkeyup")
+                onkeyup : ele.getAttribute("onkeyup"),
+                onchange : ele.getAttribute("onchange")
             }
 
             for(var key in events) {

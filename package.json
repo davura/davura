@@ -1,6 +1,6 @@
 {
     "name": "davura",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Create dynamic and simple web components",
     "main": "client.js",
     "preferGlobal": true,
@@ -9,7 +9,9 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "davura server",
         "build": "davura compile",
-        "compile": "davura compile"
+        "compile": "davura compile",
+        "preinstall": "node lib/preinstall",
+        "postinstall": "node lib/postinstall"
     },
     "repository": {
         "type": "git",
@@ -37,7 +39,6 @@
         "fs-extra": "^7.0.1",
         "jsdom": "^14.1.0",
         "live-server": "^1.2.1",
-        "microsass": "^1.0.5",
-        "open": "^6.4.0"
+        "microsass": "^1.0.5"
     }
 }
